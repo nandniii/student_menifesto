@@ -1,0 +1,358 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['Email'])) {
+	header('location:student_login.php');
+	# code...
+
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!--swiper js-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+
+</head>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Students Manifesto</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active " aria-current="page" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="Courses.php">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Notes.php">Notes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="logout.php" id="our-location" class="btn-success">Log Out
+                            <?php echo $_SESSION['Email'];   ?>
+                        </a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/imgFslide.jpg" class="d-block w-100" alt="..." />
+                <div class="carousel-caption d-none d-md-block" data-aos="fade-up" data-aos-offset="250">
+                    <h3>Find notes for yourself</h3>
+                    <p>You can find notes of the subject and topics you want to .</p>
+                    <button type="button" class="btn btn-outline-warning">
+                        Get started
+                    </button>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/img2slide.jpg" class="d-block w-100" alt="..." />
+                <div class="carousel-caption d-none d-md-block" data-aos="fade-up" data-aos-offset="250">
+                    <h3>Share your notes to others</h3>
+                    <p>Help others by sharing the notes you have.</p>
+                    <button type="button" class="btn btn-outline-warning">
+                        Get started
+                    </button>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="img/img3slide.jpg" class="d-block w-100" alt="..." />
+                <div class="carousel-caption d-none d-md-block" data-aos="fade-up" data-aos-offset="250">
+                    <h3>Discuss the notes</h3>
+                    <p>
+                        Ask questions realted to the notes uploaded and answer the
+                        questions asked from your notes. 3
+                    </p>
+                    <button type="button" class="btn btn-outline-warning">
+                        Get started
+                    </button>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div>
+        <section class="categories">
+            <div class="container categories__container">
+                <div class="categories__left" data-aos="fade-right" data-aos-offset="300">
+                    <h1>Categories</h1>
+                    <p>
+                        This plateform has a rich collection of Courses in the field of Engineering,Basic Science,and
+                        also
+                        journels and research paper so as t help students in various projects.It also offers complete
+                        preparation for higher eduction compititions.
+                    </p>
+                    <a href="#" class="btn btn-dark">Learn More</a>
+                </div>
+
+                <div class="categories__right">
+                    <article class="category" data-aos="flip-right" data-aos-offset="250">
+                        <span class="category__icon"><i class="fa-sharp fa-solid fa fa-function"></i></span>
+                        <h5><br><br>Basic Studies</h5>
+                        <p>br>We provide a detailed lecture on maths with notes.</p>
+                    </article>
+                    <article class="category" data-aos="flip-right" data-aos-offset="250">
+                        <span class="category__icon"><i class="fa-2x-light fa fa-atom"></i></span>
+                        <h5><br><br>engineering Subjects</h5>
+                        <p>We provide various subjects in the field of engineering with notes.</p>
+                    </article>
+                    <article class="category" data-aos="flip-right" data-aos-offset="250">
+                        <span class="category__icon"><i class="fa-duotone fa fa-computer"></i></span>
+                        <h5><br><br>News and Magzines</h5>
+                        <p>We have various kinds of magazines and news that will help you to crack copitative exams.</p>
+                    </article>
+                    <article class="category" data-aos="flip-right" data-aos-offset="250">
+                        <span class="category__icon"><i class="fa-light fa fa-gears"></i></span>
+                        <h5><br><br>Placement Materials</h5>
+                        <p>We provide you various lectures on how to crack your interview and will also share the
+                            materials
+                            and questions that are ask in the placement interview.</p>
+                    </article>
+                    <article class="category" data-aos="flip-right" data-aos-offset="250">
+                        <span class="category__icon"><i class="fa-sharp fa-solid fa fa-watch-calculator"></i></span>
+                        <h5><br><br>Higher Education</h5>
+                        <p>We have materials for higher educations that will help you out to enhance your knowledge</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section-cover" data-stellar-background-ratio="0.5"
+            style="background-image: url(img/big_image_3.jpg);">
+            <div class="container">
+                <div class="row justify-content-center align-items-center intro">
+                    <div class="col-md-7 text-center element-animate" data-aos="fade-up" data-aos-offset="400">
+                        <h2>Sign Up And Start your First step towards your career</h2>
+                        <p class="lead mb-5">Acomplete package that offers you to proper gyidence for your college and
+                            even after</p>
+                        <p><a href="#" class="btn btn-outline-danger">Sign up Here</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+    <section class="container testimonials_container mySwiper">
+        <h2>Students Testimonials</h2>
+        <div class="swiper-wrapper">
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="img/me.jpeg">
+                </div>
+                <div class="testimonial_info">
+                    <h5>Nandani Priya</h5>
+                    <small>Student</small>
+                </div>
+                <div class="testimonial_body">
+                    <p>
+                        This is very great initiative for students like us .
+                        The material provided here are authentic and easy to understand.
+                    </p>
+                </div>
+
+            </article>
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="img/pritha.jpeg">
+                </div>
+                <div class="testimonial_info">
+                    <h5>Pritha Kumari</h5>
+                    <small>Student</small>
+                </div>
+                <div class="testimonial_body">
+                    <p>
+                        Well baclanced content, proper guidence with latest news helped me to crack my exams.News
+                        provided
+                        are latest and are of exam point of view short notes are of great help.
+                    </p>
+                </div>
+
+            </article>
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="img/sejal.jpeg">
+                </div>
+                <div class="testimonial_info">
+                    <h5>Sejal Kumari</h5>
+                    <small>Student</small>
+                </div>
+                <div class="testimonial_body">
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi tempora autem, officiis
+                        tempore, expedita corrupti inventore nostrum dolor fugiat laborum officia veniam dicta
+                        sint a? Consectetur eaque quidem ducimus suscipit.
+                    </p>
+                </div>
+
+                </article>
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="img/jyoti.jpeg">
+                </div>
+                <div class="testimonial_info">
+                    <h5>Jyoti Kumari</h5>
+                    <small>Student</small>
+                </div>
+                <div class="testimonial_body">
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi tempora autem, officiis
+                        tempore, expedita corrupti inventore nostrum dolor fugiat laborum officia veniam dicta
+                        sint a? Consectetur eaque quidem ducimus suscipit.
+                    </p>
+                </div>
+
+            </article>
+        </div>
+        <div class="swiper-pagination"></div>
+    </section>
+    <footer>
+        <div class="container footer_container">
+            <div class="footer_1">
+                <a href="index.html" class="footer_logo">
+                    <h4>Notes</h4>
+                </a>
+                <p>
+                    Conventional books
+                    Short Notes
+                    Previous Year Papers
+                    Practice sets
+                    Doubt solving
+                </p>
+            </div>
+            <div class="footer_2">
+                <h4>Links</h4>
+                <ul class="parmalinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Home</a></li>
+                    <li><a href="courses.html">Home</a></li>
+                    <li><a href="login.html">Home</a></li>
+                </ul>
+            </div>
+            <div class="footer_3">
+                <h4>Privacy</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms and Cndition</a></li>
+                </ul>
+            </div>
+            <div class="footer_4">
+                <h4>Contact us</h4>
+                <div>
+                    <p>80925 83083</p>
+                    <p>nandnip15@gmail.com</p>
+                </div>
+
+                <ul class="footer_socials">
+                    <li>
+                        <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <script src="js/myscript.js"></script>
+    <script src="file:///D:/project/project/bootstrap-4.3.1-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            //when window with is >=600px
+            breakpoints: {
+                600: {
+                    slidesPerView: 2
+                }
+            }
+        });
+    </script>
+
+    <style>
+        .formconatiner {
+            border: 2px solid;
+            padding: 50px;
+            -webkit-box-shadow: 0px 9px 38px -2px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 0px 9px 38px -2px rgba(0, 0, 0, 0.75);
+            box-shadow: 0px 9px 38px -2px rgba(0, 0, 0, 0.75);
+
+        }
+    </style>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 300,
+            duration: 1000,
+        }
+
+        );
+    </script>
+</body>
+
+</html>
